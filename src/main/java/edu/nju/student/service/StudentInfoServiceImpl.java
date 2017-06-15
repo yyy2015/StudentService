@@ -43,8 +43,14 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     }
 
     public void modifyInfo(Holder<学生信息> parameters) throws DataFormatError {
+        学生信息 student = parameters.value;
 
-
+        try {
+            deleteInfo(student.get学号());
+            addInfo(parameters);
+        } catch (InvalidStudentId invalidStudentId) {
+            //TODO   DO Nothing, student id should always exists
+        }
 
 
     }
