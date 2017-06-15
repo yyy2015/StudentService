@@ -1,0 +1,156 @@
+<wsdl:definitions
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:tns="http://jw.nju.edu.cn/wsdl"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:jw="http://jw.nju.edu.cn/schema"
+        xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+        targetNamespace="http://jw.nju.edu.cn/wsdl">
+
+    <wsdl:documentation>
+        本WSDL 2.0文档描述了学生个人信息管理web服务的相关组件定义。
+    </wsdl:documentation>
+
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import schemaLocation="../xsd/ScoreList.xsd" namespace="http://jw.nju.edu.cn/schema"/>
+            <xsd:import schemaLocation="../xsd/Fault.xsd" namespace="http://jw.nju.edu.cn/schema"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="addInfo">
+        <wsdl:documentation>添加学生信息参数</wsdl:documentation>
+        <wsdl:part name="parameters" element="jw:学生"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addInfoResponse">
+        <wsdl:documentation>添加学生信息返回</wsdl:documentation>
+        <wsdl:part name="parameters" element="jw:学生"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="queryInfo">
+        <wsdl:documentation>查询学生信息参数</wsdl:documentation>
+        <wsdl:part name="parameters" element="jw:学号"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="queryInfoResponse">
+        <wsdl:documentation>查询学生信息返回</wsdl:documentation>
+        <wsdl:part name="parameters" element="jw:学生"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="modifyInfo">
+        <wsdl:documentation>修改学生信息参数</wsdl:documentation>
+        <wsdl:part name="parameters" element="jw:学生"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="modifyInfoResponse">
+        <wsdl:documentation>修改学生信息返回</wsdl:documentation>
+        <wsdl:part name="parameters" element="jw:学生"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="deleteInfo">
+        <wsdl:documentation>删除学生信息参数</wsdl:documentation>
+        <wsdl:part name="parameters" element="jw:学号"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="deleteInfoResponse">
+        <wsdl:documentation>添加学生信息返回</wsdl:documentation>
+        <wsdl:part name="parameters" element="jw:学生"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="InvalidStudentId">
+        <wsdl:documentation>学号错误</wsdl:documentation>
+        <wsdl:part name="InvalidStudentId" element="jw:学号错误"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="DataFormatError">
+        <wsdl:documentation>数据格式错误</wsdl:documentation>
+        <wsdl:part name="DataFormatError" element="jw:数据格式错误"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:portType name="StudentInfoService">
+        <wsdl:operation name="addInfo">
+            <wsdl:documentation>添加学生信息操作</wsdl:documentation>
+            <wsdl:input wsam:Action="http://localhost:8080/cxf/studentInfoService/addInfoRequest" message="tns:addInfo" name="addinfo"></wsdl:input>
+            <wsdl:output wsam:Action="http://localhost:8080/cxf/studentInfoService/addInfoResponse" message="tns:addInfoResponse" name="addInfoResponse"></wsdl:output>
+            <wsdl:fault name="DataFormatError" message="tns:DataFormatError"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="modifyInfo">
+            <wsdl:documentation>修改学生信息操作</wsdl:documentation>
+            <wsdl:input wsam:Action="http://localhost:8080/cxf/studentInfoService/modifyInfoRequest" message="tns:modifyInfo" name="modifyInfo"></wsdl:input>
+            <wsdl:output wsam:Action="http://localhost:8080/cxf/studentInfoService/modifyInfoResponse" message="tns:modifyInfoResponse" name="modifyInfoResponse"></wsdl:output>
+            <wsdl:fault name="DataFormatError" message="tns:DataFormatError"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="queryInfo">
+            <wsdl:documentation>查询学生信息操作</wsdl:documentation>
+            <wsdl:input message="tns:queryInfo" name="queryInfo"></wsdl:input>
+            <wsdl:output message="tns:queryInfoResponse" name="queryInfoResponse"></wsdl:output>
+            <wsdl:fault name="InvalidStudentId" message="tns:InvalidStudentId"></wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteInfo">
+            <wsdl:documentation>删除学生信息操作</wsdl:documentation>
+            <wsdl:input message="tns:deleteInfo" name="deleteInfo"></wsdl:input>
+            <wsdl:output message="tns:deleteInfoResponse" name="deleteInfoResponse"></wsdl:output>
+            <wsdl:fault name="InvalidStudentId" message="tns:InvalidStudentId"></wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="StudentInfoServiceSoapBinding" type="tns:StudentInfoService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="addInfo">
+            <wsdl:documentation>添加信息绑定细节</wsdl:documentation>
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="addInfo">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="addInfoResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataFormatError">
+                <soap:fault name="DataFormatError" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="modifyInfo">
+            <wsdl:documentation>修改信息绑定细节</wsdl:documentation>
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="modifyInfo">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="modifyInfoResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataFormatError">
+                <soap:fault name="DataFormatError" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="queryInfo">
+            <wsdl:documentation>查询信息绑定细节</wsdl:documentation>
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="queryInfo">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="queryInfoResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="InvalidStudentId">
+                <soap:fault name="InvalidStudentId" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteInfo">
+            <wsdl:documentation>删除信息绑定细节</wsdl:documentation>
+            <soap:operation soapAction="" style="document"/>
+            <wsdl:input name="deleteInfo">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="deleteInfoInfoResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="InvalidStudentId">
+                <soap:fault name="InvalidStudentId" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="StudentInfoService">
+        <wsdl:port name="StudentInfoServiceImplPort" binding="tns:StudentInfoServiceSoapBinding">
+            <soap:address location="http://localhost:8080/cxf/studentInfoService"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
