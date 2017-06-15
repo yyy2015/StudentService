@@ -78,10 +78,10 @@ public class ScoreManageServiceImpl implements ScoreManageService {
         return queryGrade(parameters.get学号());
     }
 
-    public 课程成绩列表类型 sortGrade(排序方式类型 parameters) throws InvalidCourseId, InvalidStudentId {
-//        课程成绩列表类型 result = queryGrade(pa)
-
-
+    @Override
+    public 课程成绩列表类型 sortGrade(排序类型 parameters) throws InvalidCourseId, InvalidStudentId {
         return null;
     }
+
+
 }
