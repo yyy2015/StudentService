@@ -15,6 +15,4 @@ public interface UserService {
 
     UserEntity login(@WebParam(name="email")String email,@WebParam(name="password")String password) throws ParamNullException;
 
-    UserEntity getUser(@WebParam(name="email")String email) throws ParamNullException;
-
 }

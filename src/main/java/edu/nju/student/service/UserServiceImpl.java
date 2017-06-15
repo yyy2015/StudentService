@@ -30,13 +30,4 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public UserEntity getUser(String email) throws ParamNullException {
-
-        if(email.equals("")||email==null){
-            throw new ParamNullException("getUser","email is empty or null");
-        }else {
-            return userDao.findUserEntityByEmail(email);
-        }
-    }
-
 }
