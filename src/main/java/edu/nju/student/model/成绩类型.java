@@ -35,6 +35,14 @@ public class 成绩类型 {
     protected String 学号;
     protected int 得分;
 
+    public 成绩类型() {
+    }
+
+    public 成绩类型(String 学号, int 得分) {
+        this.学号 = 学号;
+        this.得分 = 得分;
+    }
+
     /**
      * 获取学号属性的值。
      * 

@@ -49,6 +49,16 @@ public class 学生信息 {
     @XmlAttribute
     protected String 学号;
 
+    public 学生信息() {
+    }
+
+    public 学生信息(年级类型 年级, 个人信息类型 基本信息, 课程成绩列表类型 课程成绩列表, String 学号) {
+        this.年级 = 年级;
+        this.基本信息 = 基本信息;
+        this.课程成绩列表 = 课程成绩列表;
+        this.学号 = 学号;
+    }
+
     /**
      * 获取年级属性的值。
      * 

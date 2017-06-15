@@ -50,6 +50,17 @@ public class 部门类型 {
     @XmlAttribute
     protected String 部门名称;
 
+    public 部门类型() {
+    }
+
+    public 部门类型(String 部门主管, String 部门描述, 部门属性类型 部门属性, String 部门编号, String 部门名称) {
+        this.部门主管 = 部门主管;
+        this.部门描述 = 部门描述;
+        this.部门属性 = 部门属性;
+        this.部门编号 = 部门编号;
+        this.部门名称 = 部门名称;
+    }
+
     /**
      * 获取部门主管属性的值。
      * 

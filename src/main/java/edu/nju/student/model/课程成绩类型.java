@@ -42,6 +42,15 @@ public class 课程成绩类型 {
     @XmlAttribute
     protected 成绩性质类型 成绩性质;
 
+    public 课程成绩类型() {
+    }
+
+    public 课程成绩类型(List<成绩类型> 成绩, String 课程编号, 成绩性质类型 成绩性质) {
+        this.成绩 = 成绩;
+        this.课程编号 = 课程编号;
+        this.成绩性质 = 成绩性质;
+    }
+
     /**
      * Gets the value of the 成绩 property.
      * 

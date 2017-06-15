@@ -33,6 +33,17 @@ public class 课程成绩列表类型 {
 
     protected List<课程成绩类型> 课程成绩;
 
+    public 课程成绩列表类型() {
+    }
+
+
+    public 课程成绩列表类型(List<ScoreEntity> scoreEntities) {
+        课程成绩 = new ArrayList<>(scoreEntities.size());
+
+
+
+    }
+
     /**
      * Gets the value of the 课程成绩 property.
      * 

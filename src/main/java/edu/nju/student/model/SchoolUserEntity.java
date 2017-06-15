@@ -3,17 +3,18 @@ package edu.nju.student.model;
 import javax.persistence.*;
 
 /**
- * Created by yyy on 2017/6/15.
+ * @author Qiang
+ * @since 15/06/2017
  */
 @Entity
 @Table(name = "school_user", schema = "student_soa", catalog = "")
 public class SchoolUserEntity {
     private int id;
-    private String studentId;
     private String password;
+    private String studentId;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -23,23 +24,23 @@ public class SchoolUserEntity {
     }
 
     @Basic
-    @Column(name = "studentId")
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
-
-    @Basic
-    @Column(name = "password")
+    @Column(name = "password", nullable = true, length = 255)
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Basic
+    @Column(name = "studentId", nullable = true, length = 255)
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
     @Override
@@ -50,8 +51,8 @@ public class SchoolUserEntity {
         SchoolUserEntity that = (SchoolUserEntity) o;
 
         if (id != that.id) return false;
-        if (studentId != null ? !studentId.equals(that.studentId) : that.studentId != null) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
+        if (studentId != null ? !studentId.equals(that.studentId) : that.studentId != null) return false;
 
         return true;
     }
@@ -59,8 +60,8 @@ public class SchoolUserEntity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (studentId != null ? studentId.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (studentId != null ? studentId.hashCode() : 0);
         return result;
     }
 }

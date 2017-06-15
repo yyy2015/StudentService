@@ -1,6 +1,8 @@
 
 package edu.nju.student.model;
 
+import edu.nju.student.utils.SystemDefault;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -43,6 +45,29 @@ public class 地址类型 {
     protected String 街道;
     @XmlElement(required = true)
     protected String 号;
+
+    public 地址类型() {
+    }
+
+    public 地址类型(String 省份, String 城市, String 区, String 街道, String 号) {
+        this.省份 = 省份;
+        this.城市 = 城市;
+        this.区 = 区;
+        this.街道 = 街道;
+        this.号 = 号;
+    }
+
+    public 地址类型(String address) {
+        String[] addressSplit = address.split(SystemDefault.ADDRESS_SPLITER);
+        if (addressSplit.length == 5) {
+            this.省份 = addressSplit[0];
+            this.城市 = addressSplit[1];
+            this.区 = addressSplit[2];
+            this.街道 = addressSplit[3];
+            this.号 = addressSplit[4];
+        }
+
+    }
 
     /**
      * 获取省份属性的值。
