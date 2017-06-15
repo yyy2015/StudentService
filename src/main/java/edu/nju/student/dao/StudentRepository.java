@@ -9,8 +9,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface StudentRepository extends JpaRepository<StudentEntity, Integer> {
 
-
+    StudentEntity findByStudentId(String studentId);
     StudentEntity findByStudentIdAndPassword(String studentId, String password);
 
     boolean existsStudentId(String studentId);
+
+    void deleteByStudentId(String parameters);
 }

@@ -15,6 +15,16 @@ public class ScoreEntity {
     private Integer score;
     private int id;
 
+    public ScoreEntity() {
+    }
+
+    public ScoreEntity(String studentId, String courseId, String scoreAttr, Integer score) {
+        this.studentId = studentId;
+        this.courseId = courseId;
+        this.scoreAttr = scoreAttr;
+        this.score = score;
+    }
+
     @Basic
     @Column(name = "studentId", nullable = false, length = 255)
     public String getStudentId() {

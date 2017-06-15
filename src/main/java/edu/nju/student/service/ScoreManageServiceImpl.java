@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.jws.WebService;
 import javax.xml.ws.Holder;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by yyy on 2017/6/15.
@@ -54,12 +55,27 @@ public class ScoreManageServiceImpl implements ScoreManageService {
 
     public void addGrade(Holder<课程成绩列表类型> parameters) throws InvalidCourseId, InvalidScore, InvalidStudentId {
 
-
+        课程成绩列表类型 list = parameters.value;
+        if (list.get课程成绩().size() == 0) {
+            throw new InvalidScore("add", "There isnot any score");
+        }
+        String courseID = list.get课程成绩().get(0).get课程编号();
+        String courseType = list.get课程成绩().get(0).get成绩性质().name();
+        String studentId = list.get课程成绩().get(0).get成绩().get(0).get学号();
+        List<ScoreEntity> result = list.get课程成绩().stream().map(score-> new ScoreEntity(studentId, courseID, courseType, score.get成绩().get(0).get得分())).collect(Collectors.toList());
+        scoreRepository.save(result);
     }
 
     public 课程成绩列表类型 deleteGrade(学号课程号类型 parameters) throws InvalidCourseId, InvalidStudentId {
-//        parameters.
-        return null;
+        //TODO 异常检测
+
+        List<ScoreEntity> entity = scoreRepository.findByStudentIdAndCourseId(parameters.get学号(), parameters.get课程编号());
+
+        if (entity == null || entity.isEmpty()) {
+            throw new InvalidStudentId("modify", "The specific score does not exist");
+        }
+        scoreRepository.delete(entity);
+        return queryGrade(parameters.get学号());
     }
 
     public 课程成绩列表类型 sortGrade(排序方式类型 parameters) throws InvalidCourseId, InvalidStudentId {

@@ -14,4 +14,6 @@ public interface ScoreRepository extends JpaRepository<ScoreEntity, Integer> {
     List<ScoreEntity> findByStudentIdAndCourseId(String studentId, String courseId);
     ScoreEntity findByStudentIdAndCourseIdAndScoreAttr(String studentId, String courseId, String scoreAttr);
     List<ScoreEntity> findByStudentId(String studentId);
+
+    void deleteAllByStudentId(String studentId);
 }
