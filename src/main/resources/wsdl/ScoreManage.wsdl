@@ -54,7 +54,7 @@
 
     <wsdl:message name="sortGrade">
         <wsdl:documentation>成绩排序参数</wsdl:documentation>
-        <wsdl:part name="parameters" element="jw:排序方式"></wsdl:part>
+        <wsdl:part name="parameters" element="jw:排序"></wsdl:part>
     </wsdl:message>
 
     <wsdl:message name="sortGradeResponse">

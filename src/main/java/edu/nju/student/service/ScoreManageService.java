@@ -5,6 +5,7 @@ import edu.nju.student.exception.InvalidCourseId;
 import edu.nju.student.exception.InvalidScore;
 import edu.nju.student.exception.InvalidStudentId;
 import edu.nju.student.model.学号课程号类型;
+import edu.nju.student.model.排序类型;
 import edu.nju.student.model.课程成绩列表类型;
 import edu.nju.student.model.课程成绩类型;
 import edu.nju.student.utils.ObjectFactory;
@@ -103,19 +104,19 @@ public interface ScoreManageService {
 
     /**
      * 成绩排序操作
-     * 
+     *
      * @param parameters
      * @return
-     *     returns edu.nju.student.model.课程成绩列表类型
+     *     returns edu.nju.student.controller.课程成绩列表类型
      * @throws InvalidStudentId
      * @throws InvalidCourseId
      */
     @WebMethod
     @WebResult(name = "\u8bfe\u7a0b\u6210\u7ee9\u5217\u8868", targetNamespace = "http://jw.nju.edu.cn/schema", partName = "parameters")
     public 课程成绩列表类型 sortGrade(
-        @WebParam(name = "\u6392\u5e8f\u65b9\u5f0f", targetNamespace = "http://jw.nju.edu.cn/schema", partName = "parameters")
-                排序方式类型 parameters)
-        throws InvalidCourseId, InvalidStudentId
+            @WebParam(name = "\u6392\u5e8f", targetNamespace = "http://jw.nju.edu.cn/schema", partName = "parameters")
+                    排序类型 parameters)
+            throws InvalidCourseId, InvalidStudentId
     ;
 
 }
