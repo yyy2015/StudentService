@@ -22,6 +22,13 @@ public class StudentEntity {
     private String address;
     private String departmentId;
 
+    public StudentEntity() {
+    }
+
+    public StudentEntity(学生信息 student) {
+
+    }
+
     @Id
     @Column(name = "id", nullable = false)
     public int getId() {

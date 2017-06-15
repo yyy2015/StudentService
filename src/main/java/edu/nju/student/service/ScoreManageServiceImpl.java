@@ -6,7 +6,6 @@ import edu.nju.student.exception.InvalidCourseId;
 import edu.nju.student.exception.InvalidScore;
 import edu.nju.student.exception.InvalidStudentId;
 import edu.nju.student.model.*;
-import edu.nju.student.my_enum.排序方式类型;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,7 +29,7 @@ public class ScoreManageServiceImpl implements ScoreManageService {
     private ScoreRepository scoreRepository;
 
     public 课程成绩列表类型 queryGrade(String parameters) throws InvalidStudentId {
-        if (!studentRepository.existsStudentId(parameters))
+        if (!studentRepository.existsByStudentId(parameters))
             throw new InvalidStudentId("login", "studentId is invalid");
 
         List<ScoreEntity> scoreEntities = scoreRepository.findByStudentId(parameters);
