@@ -1,6 +1,7 @@
 package edu.nju.student.service;
 
 import edu.nju.student.dao.UserDao;
+import edu.nju.student.exception.EmailPwdException;
 import edu.nju.student.exception.ParamNullException;
 import edu.nju.student.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,17 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserDao userDao;
 
-    public UserEntity login(String email, String password) throws ParamNullException {
+    public UserEntity login(String email, String password) throws ParamNullException,EmailPwdException {
 
         if(email.equals("")||password.equals("")||email==null||password==null){
             throw new ParamNullException("login","email or password is empty or is null");
-        }else {
-            return userDao.findUserEntityByEmailAndPassword(email, password);
+        }else{
+            UserEntity user = userDao.findUserEntityByEmailAndPassword(email, password);
+            if(user == null){
+                throw new EmailPwdException("email or password wrong","login");
+            }else{
+                return user;
+            }
         }
     }
 

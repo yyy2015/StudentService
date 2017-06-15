@@ -32,15 +32,15 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public 学生信息 login(账号类型 parameters) throws ErrorPassword, InvalidStudentId {
 
         if(parameters==null){
-            throw new InvalidStudentId("login","account is null");
+            throw new InvalidStudentId("account is null","account is null");
         }
 
         if(parameters.get学号().equals("")||parameters.get学号()==null){
-            throw new InvalidStudentId("login","studentId is invalid");
+            throw new InvalidStudentId("studentId is invalid","studentId is invalid");
         }
 
         if(parameters.get密码().equals("")||parameters.get密码()==null){
-            throw new ErrorPassword("login","password is invalid");
+            throw new ErrorPassword("password is invalid","password is invalid");
         }
 
         String studentId = parameters.get学号();
@@ -49,7 +49,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         StudentEntity entity = studentRepository.findByStudentIdAndPassword(studentId, password);
 
         if (entity == null) {
-            throw new ErrorPassword("login","password or account is invalid");
+            throw new ErrorPassword("password or account is invalid","password or account is invalid");
         }
 
         年级类型 yearType = 年级类型.fromValue(entity.getGrade());

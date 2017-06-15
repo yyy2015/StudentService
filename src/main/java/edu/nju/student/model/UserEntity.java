@@ -14,7 +14,7 @@ public class UserEntity {
     private String password;
     private String identity;
 
-
+    @Id
     @Column(name = "id")
     @XmlElement(required = true)
     public int getId() {
