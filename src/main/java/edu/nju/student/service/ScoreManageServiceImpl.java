@@ -42,7 +42,7 @@ public class ScoreManageServiceImpl implements ScoreManageService {
     public 课程成绩列表类型 modifyGrade(课程成绩类型 parameters) throws InvalidCourseId, InvalidScore, InvalidStudentId {
         //TODO 异常检测
         成绩类型 score = parameters.get成绩().get(0);
-        ScoreEntity entity = scoreRepository.findByStudentIdAndCourseIdAndScoreAttr(score.get学号(), parameters.get课程编号(), parameters.get成绩性质().name();
+        ScoreEntity entity = scoreRepository.findByStudentIdAndCourseIdAndScoreAttr(score.get学号(), parameters.get课程编号(), parameters.get成绩性质().name());
 
         if (entity == null ) {
             throw new InvalidScore("modify", "The specific score does not exist");
