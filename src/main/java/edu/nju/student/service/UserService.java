@@ -1,8 +1,10 @@
 package edu.nju.student.service;
 
+import edu.nju.student.exception.EmailPwdException;
 import edu.nju.student.exception.ParamNullException;
 import edu.nju.student.model.UserEntity;
 
+import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
@@ -13,6 +15,7 @@ import javax.jws.WebService;
 @WebService(name="UserService")
 public interface UserService {
 
-    UserEntity login(@WebParam(name="email")String email,@WebParam(name="password")String password) throws ParamNullException;
+    @WebMethod
+    UserEntity login(@WebParam(name="email")String email,@WebParam(name="password")String password) throws ParamNullException,EmailPwdException;
 
 }
