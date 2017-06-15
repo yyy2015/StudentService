@@ -31,7 +31,7 @@ public class ScoreManageServiceImpl implements ScoreManageService {
     private ScoreRepository scoreRepository;
 
     public 课程成绩列表类型 queryGrade(String parameters) throws InvalidStudentId {
-        if (!studentRepository.existsByStudentId(parameters))
+        if ( studentRepository.findByStudentId(parameters) == null)
             throw new InvalidStudentId("login", "studentId is invalid");
 
         List<ScoreEntity> scoreEntities = scoreRepository.findByStudentId(parameters);
