@@ -11,4 +11,6 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Integer>
 
 
     StudentEntity findByStudentIdAndPassword(String studentId, String password);
+
+    boolean existsStudentId(String studentId);
 }
