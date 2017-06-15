@@ -38,6 +38,9 @@ public class 个人信息类型
 
     protected String 座机号码;
 
+    public 个人信息类型() {
+    }
+
     public 个人信息类型(StudentEntity entity, DepartmentEntity departmentEntity) {
         super();
         this.set座机号码(entity.getTelephoneNum());

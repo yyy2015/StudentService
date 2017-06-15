@@ -59,10 +59,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         List<ScoreEntity > scoreEntities = scoreRepository.findByStudentId(entity.getStudentId() );
 
         课程成绩列表类型 courseList = new 课程成绩列表类型(scoreEntities);
-//        courseList.get课程成绩().addA
 
-
-
-        return null;
+        return new 学生信息(yearType, personType, courseList, studentId);
     }
 }

@@ -1,8 +1,12 @@
 package edu.nju.student.service;
 
+import edu.nju.student.dao.DepartmentRepository;
+import edu.nju.student.dao.ScoreRepository;
+import edu.nju.student.dao.StudentRepository;
 import edu.nju.student.exception.DataFormatError;
 import edu.nju.student.exception.InvalidStudentId;
 import edu.nju.student.model.学生信息;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +21,13 @@ import javax.xml.ws.Holder;
 @Service
 @Transactional
 public class StudentInfoServiceImpl implements StudentInfoService {
+
+    @Autowired
+    private StudentRepository studentRepository;
+    @Autowired
+    private DepartmentRepository departmentRepository;
+    @Autowired
+    private ScoreRepository scoreRepository;
 
     public void addInfo(Holder<学生信息> parameters) throws DataFormatError {
 

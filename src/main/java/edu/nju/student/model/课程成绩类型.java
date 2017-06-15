@@ -45,11 +45,21 @@ public class 课程成绩类型 {
     public 课程成绩类型() {
     }
 
+    public 课程成绩类型(ScoreEntity entity) {
+        this.成绩性质 = 成绩性质类型.fromValue(entity.getScoreAttr());
+        this.课程编号 = entity.getCourseId();
+        this.成绩 = new ArrayList<>();
+        this.成绩.add(new 成绩类型(entity.getStudentId(), entity.getScore()));
+
+    }
+
     public 课程成绩类型(List<成绩类型> 成绩, String 课程编号, 成绩性质类型 成绩性质) {
         this.成绩 = 成绩;
         this.课程编号 = 课程编号;
         this.成绩性质 = 成绩性质;
     }
+
+
 
     /**
      * Gets the value of the 成绩 property.
