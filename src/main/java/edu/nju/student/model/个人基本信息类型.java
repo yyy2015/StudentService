@@ -63,6 +63,9 @@ public class 个人基本信息类型 {
     @XmlElement(required = true)
     protected 地址类型 地址;
 
+
+
+
     /**
      * 获取姓名属性的值。
      * 

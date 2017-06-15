@@ -32,20 +32,20 @@ public class StudentInfoServiceImpl implements StudentInfoService {
     private DepartmentRepository departmentRepository;
     @Autowired
     private ScoreRepository scoreRepository;
-    @Autowired
-    private AuthenticationService authenticationService;
 
 
     public void addInfo(Holder<学生信息> parameters) throws DataFormatError {
         学生信息 student = parameters.value;
-
         StudentEntity studentEntity = new StudentEntity(student);
-
+        studentRepository.save(studentEntity);
         List<ScoreEntity> scoreEntities = student.get课程成绩列表().get课程成绩().stream().map(score -> new ScoreEntity(student.get学号(), score.get课程编号(), score.get成绩性质().name(), score.get成绩().get(0).get得分())).collect(Collectors.toList());
         scoreRepository.save(scoreEntities);
     }
 
     public void modifyInfo(Holder<学生信息> parameters) throws DataFormatError {
+
+
+
 
     }
 

@@ -57,6 +57,10 @@ public class 地址类型 {
         this.号 = 号;
     }
 
+    public String getAddress() {
+        return 省份 + ";" + 城市 + ";" + 区 + ";" + 街道 + ";" + 号;
+    }
+
     public 地址类型(String address) {
         String[] addressSplit = address.split(SystemDefault.ADDRESS_SPLITER);
         if (addressSplit.length == 5) {

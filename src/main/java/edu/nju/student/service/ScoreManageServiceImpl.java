@@ -6,12 +6,14 @@ import edu.nju.student.exception.InvalidCourseId;
 import edu.nju.student.exception.InvalidScore;
 import edu.nju.student.exception.InvalidStudentId;
 import edu.nju.student.model.*;
+import edu.nju.student.my_enum.排序方式类型;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.jws.WebService;
 import javax.xml.ws.Holder;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -79,7 +81,10 @@ public class ScoreManageServiceImpl implements ScoreManageService {
 
     @Override
     public 课程成绩列表类型 sortGrade(排序类型 parameters) throws InvalidCourseId, InvalidStudentId {
-        return null;
+        课程成绩列表类型 result = queryGrade(parameters.get学号());
+        int factor = parameters.get排序方式() == 排序方式类型.从低到高 ? 1 : -1;
+        result.get课程成绩().sort((score1, score2) -> factor * Integer.compare(score1.get成绩().get(0).get得分(), score2.get成绩().get(0).get得分()));
+        return result;
     }
 
 

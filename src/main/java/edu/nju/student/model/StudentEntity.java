@@ -27,6 +27,19 @@ public class StudentEntity {
 
     public StudentEntity(学生信息 student) {
 
+
+        this.studentId = student.get学号();
+        this.password = student.get学号(); //TODO
+        this.grade = student.get年级().name();
+        this.telephoneNum = student.get基本信息().get座机号码();
+        this.name = student.get基本信息().get姓名();
+        this.sex = student.get基本信息().get性别().name();
+        this.education = student.get基本信息().get教育背景().value();
+        this.marriageStat = student.get基本信息().get婚姻状况().value();
+        this.phoneNum = student.get基本信息().get手机号码();
+        this.address = student.get基本信息().get地址().getAddress();
+        this.departmentId = student.get基本信息().get部门().get部门编号();
+
     }
 
     @Id
