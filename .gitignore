@@ -49,3 +49,5 @@ crashlytics-build.properties
 fabric.properties
 /.idea/
 /target/
+
+.DS_Store
