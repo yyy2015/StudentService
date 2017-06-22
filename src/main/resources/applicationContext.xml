@@ -25,9 +25,9 @@
           destroy-method="close">
         <property name="driverClass" value="${driverClass}" />
         <property name="jdbcUrl"
-                  value="${jdbcUrl}" />
-        <property name="user" value="${user}" />
-        <property name="password" value="${password}" />
+                  value="jdbc:mysql://106.15.91.25:3306/student_soa?useUnicode=true&amp;characterEncoding=UTF-8" />
+        <property name="user" value="admin" />
+        <property name="password" value="Happy36*" />
         <property name="maxPoolSize" value="40"></property>
         <property name="minPoolSize" value="1"></property>
         <property name="initialPoolSize" value="1"></property>
@@ -43,7 +43,7 @@
     <jpa:repositories base-package="edu.nju.student"
                       entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager" />
 
-     <!--配置sessionFactory-->
+    <!--配置sessionFactory-->
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
