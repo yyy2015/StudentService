@@ -23,7 +23,7 @@
     <!--定义数据源-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
-        <property name="driverClass" value="${driverClass}" />
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
         <property name="jdbcUrl"
                   value="jdbc:mysql://106.15.91.25:3306/student_soa?useUnicode=true&amp;characterEncoding=UTF-8" />
         <property name="user" value="admin" />
