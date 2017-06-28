@@ -3,6 +3,7 @@ package edu.nju.student.service;
 
 import edu.nju.student.exception.DataFormatError;
 import edu.nju.student.exception.InvalidStudentId;
+import edu.nju.student.model.学号类型;
 import edu.nju.student.model.学生信息;
 import edu.nju.student.utils.ObjectFactory;
 
@@ -85,8 +86,8 @@ public interface StudentInfoService {
     @WebMethod
     @WebResult(name = "\u5b66\u751f", targetNamespace = "http://jw.nju.edu.cn/schema", partName = "parameters")
     public 学生信息 deleteInfo(
-        @WebParam(name = "\u5b66\u53f7", targetNamespace = "http://jw.nju.edu.cn/schema", partName = "parameters")
-        String parameters)
+        @WebParam(name = "学号类型", targetNamespace = "http://jw.nju.edu.cn/schema", partName = "parameters")
+                学号类型 parameters)
         throws InvalidStudentId
     ;
 

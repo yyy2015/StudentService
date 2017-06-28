@@ -46,7 +46,8 @@ public class StudentInfoServiceImpl implements StudentInfoService {
         学生信息 student = parameters.value;
 
         try {
-            deleteInfo(student.get学号());
+            学号类型 idType = new 学号类型();
+            deleteInfo(idType);
             addInfo(parameters);
         } catch (InvalidStudentId invalidStudentId) {
             //TODO   DO Nothing, student id should always exists
@@ -73,12 +74,13 @@ public class StudentInfoServiceImpl implements StudentInfoService {
         return new 学生信息(yearType, personType, courseList, parameters);
     }
 
-    public 学生信息 deleteInfo(String parameters) throws InvalidStudentId {
+    public 学生信息 deleteInfo(学号类型 parameters) throws InvalidStudentId {
         // 无需检测异常，若id不存在，执行queryinfo时即会抛出异常
-        学生信息 result = queryInfo(parameters);
+        String id = parameters.get学号();
+        学生信息 result = queryInfo(id);
 
-        scoreRepository.deleteAllByStudentId(parameters);
-        studentRepository.deleteByStudentId(parameters);
+        scoreRepository.deleteAllByStudentId(id);
+        studentRepository.deleteByStudentId(id);
 
         return result;
 
